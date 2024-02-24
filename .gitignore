@@ -1,0 +1,11 @@
+# remove modules folder
+node_modules
+
+# hid env file
+.env
+
+# other files for reference
+_ref
+
+*.css
+*.map

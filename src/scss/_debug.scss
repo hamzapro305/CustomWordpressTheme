@@ -1,0 +1,107 @@
+@function mapReverse($map) {
+  $result: null;
+  @if type-of($map) == "map" {
+      $keys: map-keys($map);
+      $map-reversed: ();
+      @for $i from length($keys) through 1 {
+          $map-reversed: map-merge(
+              $map-reversed,
+              (nth($keys, $i): map-get($map, nth($keys, $i)))
+          );
+      }
+      @if type-of($map-reversed) == "map" {
+          $result: $map-reversed;
+      } @else {
+          @warn 'There was an error reversing the order of "#{$map}"';
+      }
+  } @else {
+      @warn '"#{$map}" is not a valid map';
+  }
+  @return $result;
+}
+
+$reversedBreakpoints: mapReverse($custom-breakpoints); 
+
+.debug{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  color: crimson;
+  margin: 0;
+  padding: 3px;
+  font-size: 12px;
+  line-height: 12px;
+  background-color: rgba(255,255,255,.9);
+  z-index: 99999;
+  .debug-currentBreakpoint{
+    &::after{
+      $i: 0;
+      @each $breakpoint, $values in $reversedBreakpoints{
+        $i: $i + 1;
+        @if $i == 1{
+          content: 'Breakpoint: #{map-get($values, name)}';
+        }
+      }
+    }
+  }
+  .debug-breakpointRange{
+    &::after{
+      $i: 0;
+      @each $breakpoint, $values in $reversedBreakpoints{
+        $i: $i + 1;
+        @if $i == 1{
+          content: 'Range: #{map-get($values, minSize)} - Unlimited';
+        }
+      }
+    }
+  }
+}
+
+@each $breakpoint, $values in $reversedBreakpoints{
+  @media (max-width: #{map-get($values, maxSize)}){
+    .debug{
+      .debug-currentBreakpoint{
+        &::after{
+          content: 'Breakpoint: #{map-get($values, name)}';
+        }
+      }
+      .debug-breakpointRange{
+        &::after{
+          content: 'Range: #{map-get($values, minSize)} - #{map-get($values, maxSize)}';
+        }
+      }
+    }
+  }
+}
+
+@mixin responsive($breakpoint) { 
+  @if map-has-key($custom-breakpoints, $breakpoint) {
+      @media (max-width: #{map-get(map-get($custom-breakpoints, $breakpoint), maxSize)}) {
+        @content;
+      }
+  }
+  @else {
+      @warn "Breakpoint `#{$breakpoint}` does not exist. Check case sensitivity.";
+  }
+}
+
+
+.adminbar {
+  .debug {
+    top:32px;
+    
+    @include responsive(md) {
+      top:0px;
+      left:120px;
+    }
+  }
+}
+
+@include responsive(md) {
+  #wpadminbar {
+      display:none;
+  }
+  html#no {
+    margin-top:0 !important;
+  }
+}

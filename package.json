@@ -1,0 +1,33 @@
+{
+  "name": "stature_victor_wordpresstemplate",
+  "version": "1.0.0",
+  "description": "Theme for Victor Website",
+  "scripts": {
+    "watch": "node watcher.js",
+    "acf:import": "node acf_import.js",
+    "acf:export": "node acf_export.js"
+  },
+  "engines": {
+    "node": ">=12.16.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BannerWave-LLC/Stature_Victor_WordpressTemplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BannerWave-LLC/Stature_Victor_WordpressTemplate/issues"
+  },
+  "homepage": "https://github.com/BannerWave-LLC/Stature_Victor_WordpressTemplate#readme",
+  "dependencies": {
+    "buffer-replace": "^1.0.0",
+    "chokidar": "^3.3.1",
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "fs-extra": "^8.1.0",
+    "node-sass": "^4.13.1",
+    "path": "^0.12.7",
+    "ssh2-sftp-client": "^5.0.2"
+  }
+}

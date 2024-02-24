@@ -1,0 +1,13 @@
+/* @import must be at top of file, otherwise CSS will not work */
+@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap');
+
+
+// Breakpoints Structure
+$custom-breakpoints: (
+    xs: (minSize: 0px, maxSize: 575px, maxContWidth: 0px, name: 'XS'),
+    sm: (minSize: 576px, maxSize: 767px, maxContWidth: 719px, name: 'SM'),
+    md: (minSize: 768px, maxSize: 991px, maxContWidth: 720px, name: 'MD'),
+    lg: (minSize: 992px, maxSize: 1249px, maxContWidth: 960px, name: 'LG'),
+    xl: (minSize: 1250px, maxSize: 1499px, maxContWidth: 1250px, name: 'XL'),
+    max: (minSize: 1500px, maxSize: 0px, maxContWidth: 1201px, name: 'MAX')
+); 

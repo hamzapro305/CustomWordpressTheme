@@ -1,0 +1,29 @@
+/*
+Theme Name: THEME_NAME
+Theme URI: 
+Author: THEME_AUTHOR
+Description: THEME_DESCRIPTION
+Version: THEME_VERSION
+*/
+
+@import 'vars'; 
+@import 'debug'; 
+@import 'mixins';
+@import 'global'; 
+@import 'footer';
+@import 'header';
+
+// Navigation
+
+
+// 404
+
+
+// Blocks
+
+// Shortcodes
+
+
+table.xdebug-error.xe-warning {
+    display: none;
+}

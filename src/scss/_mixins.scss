@@ -1,0 +1,38 @@
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+@mixin center() {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
+@mixin Text($family, $weight, $size, $color, $important: false) {
+    $important-declaration: if($important, " !important", "");
+
+    font-family: $family#{$important-declaration};
+    font-weight: $weight#{$important-declaration};
+    font-size: $size#{$important-declaration};
+    color: $color#{$important-declaration};
+}
