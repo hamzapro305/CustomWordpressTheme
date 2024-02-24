@@ -1,1 +1,1 @@
-# Stature_Victor_WordpressTemplate
+# Custom Wordpress Theme
